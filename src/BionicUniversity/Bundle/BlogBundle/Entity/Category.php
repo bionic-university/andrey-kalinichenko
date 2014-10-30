@@ -2,6 +2,7 @@
 
 namespace BionicUniversity\Bundle\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,11 +29,30 @@ class Category
      */
     private $name;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="BionicUniversity\Bundle\BlogBundle\Entity\Post", mappedBy="category")
+     */
+    private $posts;
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +75,7 @@ class Category
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {

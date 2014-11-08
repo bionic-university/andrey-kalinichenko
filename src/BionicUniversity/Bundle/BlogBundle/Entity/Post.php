@@ -22,6 +22,12 @@ class Post
      */
     private $id;
 
+	/**
+	 * @var \DateTime
+	 * @ORM\Column(created)
+	 */
+	private $created;
+
     /**
      * @var string
      *
